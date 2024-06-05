@@ -1,4 +1,5 @@
 pytest
 testcontainers[nats]
 nats-py
+pytest-asyncio
 
