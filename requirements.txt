@@ -1,0 +1,4 @@
+pytest
+testcontainers[nats]
+nats-py
+
