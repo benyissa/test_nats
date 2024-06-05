@@ -1,21 +1,14 @@
+import os
+
 import pytest
-from testcontainers.nats import NatsContainer
 import nats
 import asyncio
 
 
-@pytest.fixture(scope="module")
-def nats_container():
-    container = NatsContainer(image="nats:latest")
-    container.start()
-    yield container
-    container.stop()
-
-
 @pytest.mark.asyncio
-async def test_nats(nats_container):
+async def test_nats():
     # Connect to the NATS server
-    nats_url = f"nats://{nats_container.get_container_host_ip()}:{nats_container.get_exposed_port(4222)}"
+    nats_url = os.getenv('NATS_SERVER', 'nats://localhost:4222')
     nc = await nats.connect(nats_url)
     assert nc.is_connected
 
