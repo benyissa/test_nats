@@ -5,12 +5,6 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      nats:
-        image: nats:latest
-        ports:
-          - 4222:4222
-        options: --name nats
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,5 +20,3 @@ jobs:
 
       - name: Run tests
         run: pytest
-        env:
-          NATS_SERVER: nats://localhost:4222
