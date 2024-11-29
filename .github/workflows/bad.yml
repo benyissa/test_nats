@@ -1,0 +1,15 @@
+name: Never executed
+
+on:
+  workflow_run:
+    workflows:
+      - I will fail
+    types:
+      - completed
+
+jobs:
+    good:
+        runs-on: ubuntu-latest
+        steps:
+            - name: ok
+              run: echo "I will never execute"
