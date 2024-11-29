@@ -6,6 +6,7 @@ jobs:
 #  job2 shouldn't start until job1 is done
   job1:
     runs-on: ubuntu-latest
+    steps:
       - name: Hey1
         run: echo "Hey1"
 #      wait for 1 minute
@@ -15,5 +16,6 @@ jobs:
   job2:
     needs: job1
     runs-on: ubuntu-latest
+    steps:
       - name: Hey1
         run: echo "Hey1"
