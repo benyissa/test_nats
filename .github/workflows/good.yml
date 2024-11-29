@@ -1,0 +1,15 @@
+name: Test Good is Good
+
+on:
+  workflow_run:
+    workflows:
+      - Test with NATS
+    types:
+      - completed
+
+jobs:
+    good:
+        runs-on: ubuntu-latest
+        steps:
+            - name: ok
+              run: echo "I am good"
