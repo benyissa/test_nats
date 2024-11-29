@@ -1,0 +1,19 @@
+name: Linked jobs
+
+on: [push, pull_request]
+
+jobs:
+#  job2 shouldn't start until job1 is done
+  job1:
+    runs-on: ubuntu-latest
+      - name: Hey1
+        run: echo "Hey1"
+#      wait for 1 minute
+      - name: Sleep
+        run: sleep 60
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+      - name: Hey1
+        run: echo "Hey1"
